@@ -18,7 +18,7 @@
 
 html,
 body {
-	height: 100%;
+	
 	font-family: "Lato", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
@@ -300,11 +300,22 @@ ol {
 -----------------------*/
 
 .header-section {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	top: 0;
-	padding: 30px 50px 0;
+	padding: 30px 50px 20px 0;
 	z-index: 99;
+
+}
+
+.header-section:scroll {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	padding: 30px 50px 20px 0;
+	z-index: 99;
+	background-color: blue;
+
 }
 
 .header-section .site-btn {
