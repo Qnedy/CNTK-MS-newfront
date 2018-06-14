@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Cryptocurrency - Landing Page Template</title>
+	<title>Easy - CNTK</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="Cryptocurrency Landing Page Template">
 	<meta name="keywords" content="cryptocurrency, unica, creative, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
-	<link href="img/favicon.ico" rel="shortcut icon"/>
+	<link href="favicon.ico" rel="shortcut icon"/>
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
@@ -96,24 +96,30 @@
 				//console.log(testeToJson.description.captions[0].text);
 				//console.log(testeToJson.description.tags);
 	
-				var nivelConfiabilidade = testeToJson.description.captions[0].confidence
-	
-				$('#imageDiv').append("<div class='col-md-20'><h1>" + testeToJson.description.captions[0].text + "</h1>");
+				var tags = testeToJson.description.tags.slice(-17);
+                    var nivelConfiabilidade = testeToJson.description.captions[0].confidence
 
-				$('#imageDiv').append("<a>"+ testeToJson.description.tags.slice(-17)+"<br><br></a>")
-	
-				// $('#imageDiv').append("<p>" + testeToJson.description.tags.slice(-17) + "</p>");
+					$('#imageDiv').append("<h5>O que tem na imagem: </h5>");
+
+                    $('#imageDiv').append("<div class='col-md-20'><h1>" + testeToJson.description.captions[0].text + "</h1>");
+
+                    $('#imageDiv').append("<h5>Tags relacionadas a imagem: </h5>");
+                    tags.forEach(function(item){
+                        $('#imageDiv').append(`<a href='https://www.google.com.br/search?q=${item}'>${item}, `);
+
+                    });
 	
 				$('#metadata').append("<h2>" + testeToJson.metadata.format + "</h2></div>");
 				
 	
 				if(testeToJson.categories[0].detail){
 					if(testeToJson.categories[0].detail.celebrities.length >0){
+						$('#imageDiv').append("<h5>  Selo: </h5> ");
 					$('#imageDiv').append("<img src='img/celebridade-icone.png'/>");
 				};
 				};
 	
-				 $('#imageDiv').append("Metadados:");
+				 $('#imageDiv').append("<h5>  Metadados: </h5> ");
 	
 				if(testeToJson.metadata.format == "Jpeg"){
 					$('#imageDiv').append("<img src='img/jpeg.png'/>");
@@ -189,31 +195,204 @@
 			<!-- <a href="" class="site-btn">Sign Up Free</a> -->
 			<nav class="main-menu">
 				<ul class="menu-list">
-					<li><a href="" class="site-btn">Sobre Nós</a></li>
-					<li><a href="" class="site-btn">Contato</a></li>
+					<li><a href="#nos" class="site-btn">Quem somos</a></li>
+					<li><a href="#CNTK" class="site-btn">CNTK</a></li>
+					<li><a href="#inicio" class="site-btn">Início</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
 	<!-- Header section end -->
 
-
 	<!-- Hero section -->
 	<section class="hero-section">
-		<div class="container">
-			<div class="row">
-				<div id="imageDiv" class="col-md-6 hero-text">
-					<h2>Insira sua <span>Imagem</span> <br>abaixo:</h2>
-					<h4>Use de preferencia formatos JPG/PNG<br> e imagens maiores que 50x50</h4>
+		
+		<div id="inicio" class="container">
+				<div class="row praQServe">
+					<h1>
+						O que é o Easy CNTK?
+					</h1><br>
+					<h5>
+						Nós da Easy CNTK somos alunos do curso <br> Ciência da Computação do CEULP/ULBRA. 
+						Nosso objetivo aqui é <br>te entregar de forma mais legal as informações dadas pela
+						API da Microsoft, Cognitive ToolKit de visão computacional, que originalmente retorna
+						somente um JSON com os dados. Saiba mais Sobre
+						essa ferramenta <a href="https://www.microsoft.com/en-us/cognitive-toolkit/"  target="_blank">aqui</a>.<br>
+	
+						<br> Aqui utilizamos gratuitamente a CNTK com a chave de 7 dias que eles 
+						disponibilizam. Pretendemos continuar com isso rodando,
+						então buscaremos alguma solução para manter a API funcionando aqui na Easy CNTK.
+						Caso você queira rodar isso localmente com sua própria chave, resgate ela no site 
+						da CNTK e insira no código desse site, na linha 44.
+						<br>
+						<br>Esse projeto foi desenvolvido pela proposta do professor Jackson Gomes do CEULP
+						na disciplina de Multimídia e Hipermídia 2018/1. 
+					</h5>
+				</div>
+			<div id="CNTK" class="row">
+				<div id="imageDiv" class="col-md-12 hero-text">
+					<h2>Insira a URL da sua <span>Imagem</span> abaixo:</h2>
+					<h4>Use de preferencia formatos JPG/PNG<br> e imagens maiores que 50x50 <br> Atualize a página para outra análise.</h4>
 					<form class="hero-subscribe-from">
 						<input type="text" name="inputImage" id="inputImage" placeholder="Cole aqui o Link da Imagem">
-						<button type="button" id="btn-teste" onclick="processImage()" class="site-btn sb-gradients">Enviar</button>
+						<button type="button" id="btn-teste" onclick="processImage() " onClick="history.go(0)" class="site-btn sb-gradients">Enviar</button>
 					</form>
 				</div>
 				<div class="col-md-6">
-					<img class="col-md-25" width="400" height="400" alt"Imagem Escolhida "src="" id="sourceImage" width="400"/>
-					<canvas class='col-md-18' style="padding-left: 20%; font-size: 40px; margin-left: 20%;" id="myChart"></canvas>
+					<br>
+					<img class="col-md-10" width="400" height="400" alt"Imagem Escolhida "src="" id="sourceImage" />
+					
 				</div>
+				<div class="col-md-6">
+					<canvas class='col-md-10' style=" float:right; font-size: 40px;" id="myChart"></canvas>
+				</div>
+			</div>
+		</div>
+		<div id="nos" class="container">
+			<div class="row quemSomos">
+				<h1>Nossa cara e mais?</h1>
+				        <!-- Team -->
+<section id="team" class="pb-5">
+    <div class="container">
+        <div class="row">
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="img/kennedy.png" alt="card image"></p>
+                                    <h4 class="card-title">Kennedy Santos</h4>
+                                    <p class="card-text">21 anos, gosto de programar ouvindo música índie, as vezes rock, pop ou mpb kkk. Estudando pra ser Desenvolvedor FullStack.</p>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Kennedy Santos</h4>
+                                    <p class="card-text">Mais um pouco sobre mim. Faço piada com tudo. Trabalho na Assembleia Legislativa do Tocantins. Me acompanhe nas redes sociais abaixo ^^</p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.facebook.com/qnedysantos">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="https://twitter.com/q_nedy">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="img/ezequiel.png" alt="card image"></p>
+                                    <h4 class="card-title">Ezequiel Queiroz</h4>
+                                    <p class="card-text">20 anos, estudante de Ciência da Computação no CEULP/ULBRA, Desenvolvedor Web Back-end na empresa miBank.</p>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Ezequiel Queiroz</h4>
+                                    <p class="card-text"> Tenho como hobbies praticar basquete e procurar informações sobre novas tecnologias!!</p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.facebook.com/equeirozdenoronha">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member --><!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="img/lucas.png" alt="card image"></p>
+                                    <h4 class="card-title">Lucas Alves</h4>
+                                    <p class="card-text">Esse merdinha n me mandou o texto ainda.</p>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Lucas Alves</h4>
+                                    <p class="card-text">Mais um pouco sobre mim. Faço piada com tudo. Me acompanhe nas redes sociais abaixo ^^</p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.facebook.com/lucsbasto">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member --><!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="img/taylor.png" alt="card image"></p>
+                                    <h4 class="card-title">Taylor Oliveira</h4>
+                                    <p class="card-text">20 anos, Sou estudante do 6 período do curso de ciência da computação no Ceulp Ulbra. Trabalho na Assembleia Legislativa como programador junior. </p>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <h4 class="card-title">Taylor Oliveira</h4>
+                                    <p class="card-text">Moro em Palmas faz três anos. Sou natural do Mato Grosso. Mudei para Palmas para estudar.</p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.facebook.com/taylor.santosoliveira">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+         
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
 			</div>
 		</div>
 	</section>
