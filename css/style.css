@@ -347,9 +347,9 @@ ol {
 -----------------------*/
 
 .hero-section {
-	height: 130%;
+	
 	padding-top: 10%;
-	display: block;
+
 	background-image: url("../img/hero-bg.png");
 	background-size: cover;
 	background-color: #f3f7f9;
