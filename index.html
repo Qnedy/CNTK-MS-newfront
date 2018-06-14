@@ -232,10 +232,11 @@
 			<div id="CNTK" class="row">
 				<div id="imageDiv" class="col-md-12 hero-text">
 					<h2>Insira a URL da sua <span>Imagem</span> abaixo:</h2>
-					<h4>Use de preferencia formatos JPG/PNG<br> e imagens maiores que 50x50 <br> Atualize a página para outra análise.</h4>
+					<h4>Use de preferencia formatos JPG/PNG<br> e imagens maiores que 50x50 <br> <b>Recarregue</b> a página para outra análise.</h4>
 					<form class="hero-subscribe-from">
 						<input type="text" name="inputImage" id="inputImage" placeholder="Cole aqui o Link da Imagem">
-						<button type="button" id="btn-teste" onclick="processImage() " onClick="history.go(0)" class="site-btn sb-gradients">Enviar</button>
+						<button type="button" id="btn-teste" onclick="processImage(); this.disabled=true;"class="site-btn sb-gradients">Enviar</button>
+						<button type="button" id="reload"  class="site-btn sb-gradients" onclick="window.location.reload()">Recarregar</button>
 					</form>
 				</div>
 				<div class="col-md-6">
